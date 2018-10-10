@@ -35,12 +35,12 @@ public class StudentController {
     @Autowired
     private StudentService studentService;
 
+
     /**
-     * 方法实现说明
-     * @author 高伟萌
-     * @Description 跳转至学生列表页面
-     * @date 2018-09-20 13:29
-     * @return java.lang.String
+     * Open list page model and view.
+     * 跳转至学生列表页面
+     *
+     * @return the model and view
      */
     @RequestMapping("student")
     public ModelAndView openListPage(){
@@ -51,12 +51,14 @@ public class StudentController {
         return mav;
     }
 
+
     /**
-     * @Author Mr.Gao
-     * @Description 查询学生数据
-     * @Date 2018/9/22 17:19
-     * @Param [page, limit]
-     * @return cn.wisdsoft.pojo.PageResult<cn.wisdsoft.ddms.pojo.Student>
+     * Config list page result.
+     * 查询学生数据
+     *
+     * @param page  the page
+     * @param limit the limit
+     * @return the page result
      */
     @RequestMapping(value = "configList",method= RequestMethod.GET)
     @ResponseBody
@@ -70,12 +72,14 @@ public class StudentController {
         return pageResult;
     }
 
+
     /**
-     * @Author Mr.Gao
-     * @Description 查询所有第一次被删除的学生（用于数据恢复）
-     * @Date 2018/9/24 18:23
-     * @Param [page, limit]
-     * @return cn.wisdsoft.pojo.PageResult<cn.wisdsoft.ddms.pojo.Student>
+     * Config del list page result.
+     * 查询第一次被删除的学生（用于数据恢复）
+     *
+     * @param page  the page
+     * @param limit the limit
+     * @return the page result
      */
     @RequestMapping(value = "configDelList",method = RequestMethod.GET)
     @ResponseBody
@@ -89,12 +93,13 @@ public class StudentController {
         return pageResult;
     }
 
+
     /**
-     * @Author Mr.Gao
-     * @Description 跳转至查看页面
-     * @Date 2018/9/22 17:21
-     * @Param [id]
-     * @return org.springframework.web.servlet.ModelAndView
+     * Go to see model and view.
+     * 跳转至查看页面
+     *
+     * @param id the id
+     * @return the model and view
      */
     @RequestMapping(value = "goToSee",method= RequestMethod.GET)
     public ModelAndView goToSee(int id){
@@ -106,11 +111,11 @@ public class StudentController {
     }
 
     /**
-     * @Author Mr.Gao
-     * @Description 根据ID删除学生（将stu_delFlag由0变为1）
-     * @Date 2018/9/23 22:52
-     * @Param [id]
-     * @return cn.wisdsoft.pojo.DdmsResult
+     * First del student ddms result.
+     * 根据ID删除学生
+     *
+     * @param id the id
+     * @return the ddms result
      */
     @RequestMapping(value = "firstDelStudent",method = RequestMethod.GET)
     @ResponseBody
@@ -120,11 +125,11 @@ public class StudentController {
     }
 
     /**
-     * @Author Mr.Gao
-     * @Description 根据ID彻底删除学生
-     * @Date 2018/9/24 19:26
-     * @Param [id]
-     * @return cn.wisdsoft.pojo.DdmsResult
+     * Second del student ddms result.
+     * 彻底删除学生
+     *
+     * @param id the id
+     * @return the ddms result
      */
     @RequestMapping(value = "secondDelStudent",method = RequestMethod.GET)
     @ResponseBody
@@ -134,11 +139,11 @@ public class StudentController {
     }
 
     /**
-     * @Author Mr.Gao
-     * @Description 根据ID更新学生信息
-     * @Date 2018/9/24 11:25
-     * @Param [id]
-     * @return cn.wisdsoft.pojo.DdmsResult
+     * Update student ddms result.
+     * 更新学生信息
+     *
+     * @param student the student
+     * @return the ddms result
      */
     @RequestMapping(value = "updateStudent",method = RequestMethod.POST)
     @ResponseBody
@@ -148,6 +153,13 @@ public class StudentController {
         return DdmsResult.ok(flag);
     }
 
+    /**
+     * Restore student ddms result.
+     * 恢复学生信息
+     *
+     * @param id the id
+     * @return the ddms result
+     */
     @RequestMapping(value = "restoreStudent",method = RequestMethod.POST)
     @ResponseBody
     public DdmsResult restoreStudent(String[] id){
@@ -160,11 +172,11 @@ public class StudentController {
     }
 
     /**
-     * @Author Mr.Gao
-     * @Description 跳转至编辑页面
-     * @Date 2018/9/24 11:46
-     * @Param []
-     * @return org.springframework.web.servlet.ModelAndView
+     * Go to edit model and view.
+     * 跳转至编辑页面
+     *
+     * @param id the id
+     * @return the model and view
      */
     @RequestMapping(value = "goToEdit",method = RequestMethod.GET)
     public ModelAndView goToEdit(int id){
@@ -178,11 +190,10 @@ public class StudentController {
     }
 
     /**
-     * @Author Mr.Gao
-     * @Description 跳转至数据恢复页面
-     * @Date 2018/9/24 18:28
-     * @Param []
-     * @return java.lang.String
+     * Open del page model and view.
+     * 跳转至删除页面
+     *
+     * @return java.lang.String model and view
      */
     @RequestMapping("openDelPage")
     public ModelAndView openDelPage(){
@@ -215,7 +226,6 @@ public class StudentController {
         return studentService.filterStudent(stuId, stuName, stuClass,delFlag, page, limit);
     }
 
-
     @RequestMapping(value = "uploadExcel")
     public String uploadExcel(MultipartFile fileType){
         try {
@@ -229,7 +239,13 @@ public class StudentController {
         return null;
     }
 
-
+    /**
+     * Down load.
+     * 下载模板
+     *
+     * @param sheetName the sheet name
+     * @param response  the response
+     */
     @RequestMapping(value = "downLoad")
     @ResponseBody
     public void downLoad(String sheetName,HttpServletResponse response){
