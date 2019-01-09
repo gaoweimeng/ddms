@@ -1,24 +1,24 @@
-layui.use(['form','layer'], function(){
+layui.use(['form', 'layer'], function () {
     $ = layui.jquery;
     var form = layui.form
-        ,layer = layui.layer;
+        , layer = layui.layer;
 
     //自定义验证规则
     form.verify({
-        phoneNum:  [/(^$)|^1\d{10}$/, '请输入正确的手机号']
+        phoneNum: [/(^$)|^1\d{10}$/, '请输入正确的手机号']
     });
 
     //监听提交
-    form.on('submit(add)', function(data){
+    form.on('submit(add)', function (data) {
         data.field.teaPicture = $('#image').get(0).currentSrc;
         //发异步，把数据提交给php
         $.ajax({
-            url : 'http://localhost:8080/teacher/add'
-            ,type : 'post'
-            ,data : {
-                "result" : JSON.stringify(data.field)
-            },success : function () {
-                layer.alert("添加成功", {icon: 6},function () {
+            url: 'http://localhost:8080/teacher/add'
+            , type: 'post'
+            , data: {
+                "result": JSON.stringify(data.field)
+            }, success: function () {
+                layer.alert("添加成功", {icon: 6}, function () {
                     // 获得frame索引
                     var index = parent.layer.getFrameIndex(window.name);
                     window.parent.location.reload();
@@ -26,8 +26,8 @@ layui.use(['form','layer'], function(){
                     parent.layer.close(index);
                     return true;
                 });
-            },error : function () {
-                layer.alert("添加失败", {icon: 5},function () {
+            }, error: function () {
+                layer.alert("添加失败", {icon: 5}, function () {
                     // 获得frame索引
                     var index = parent.layer.getFrameIndex(window.name);
                     //关闭当前frame
@@ -42,7 +42,7 @@ layui.use(['form','layer'], function(){
 
 });
 
-layui.use('laydate', function(){
+layui.use('laydate', function () {
     var laydate = layui.laydate;
 
     laydate.render({

@@ -38,7 +38,8 @@
         <div class="layui-form-item">
             <img id="image" width="92.7px" height="125px" style="border: 1px solid red"><br/>
         </div>
-        <button type="button" class="layui-btn layui-btn-normal" id="test8"><i class="layui-icon">&#xe67c;</i>上传图片</button>
+        <button type="button" class="layui-btn layui-btn-normal" id="test8"><i class="layui-icon">&#xe67c;</i>上传图片
+        </button>
     </div>
     <form class="layui-form">
         <div class="layui-form-item">
@@ -113,7 +114,9 @@
             </label>
             <div class="layui-input-inline">
                 <select id="L_teaNation" name="teaNation">
-                    <option value="汉">汉</option>
+                    <c:forEach items="${nation}" var="x">
+                        <option value="${x.name}">${x.name}</option>
+                    </c:forEach>
                 </select>
             </div>
         </div>
@@ -226,7 +229,8 @@
             </label>
             <div class="layui-input-inline">
                 <input type="text" id="L_teaCometime"
-                       value="<fmt:formatDate value="${ teacher.teaCometime }" pattern="yyyy-MM-dd"/>" name="teaCometime"
+                       value="<fmt:formatDate value="${ teacher.teaCometime }" pattern="yyyy-MM-dd"/>"
+                       name="teaCometime"
                        lay-verify="required"
                        autocomplete="off" class="layui-input">
             </div>
@@ -277,9 +281,9 @@
 
 <script>
     $(function () {
-        var src =  "${teacher.teaPicture}";
-        if(src!=null&&src!='') {
-            $('#image').attr("src","${teacher.teaPicture}");
+        var src = "${teacher.teaPicture}";
+        if (src != null && src != '') {
+            $('#image').attr("src", "${teacher.teaPicture}");
         }
     });
 </script>

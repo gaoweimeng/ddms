@@ -2,7 +2,9 @@ package cn.wisdsoft.ddms.mapper.teacher;
 
 import cn.wisdsoft.ddms.pojo.Teacher;
 import cn.wisdsoft.ddms.pojo.TeacherExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface TeacherMapper {
@@ -37,5 +39,7 @@ public interface TeacherMapper {
      */
     List<Teacher> queryCondition(@Param(value = "condition") String condition);
 
-    int importExcel(@Param("list")List list);
+    int importExcel(@Param("list") List list);
+
+    List<Teacher> selectByIdArrayTeacher(String[] id);
 }

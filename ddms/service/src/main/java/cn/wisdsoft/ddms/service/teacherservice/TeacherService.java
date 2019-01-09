@@ -69,8 +69,8 @@ public interface TeacherService {
      * 无条件分页
      *
      * @param page 当前页数
-     * @param rows  显示行数
-     * @return cn.wisdsoft.pojo.PageResult<cn.wisdsoft.ddms.pojo.Teacher> 
+     * @param rows 显示行数
+     * @return cn.wisdsoft.pojo.PageResult<cn.wisdsoft.ddms.pojo.Teacher>
      * @date 17:18 2018/9/20
      */
     PageResult<Teacher> queryAllPageTeacher(int page, int rows);
@@ -78,9 +78,9 @@ public interface TeacherService {
     /**
      * 通过条件查询分页
      *
-     * @param page  当前页数
-     * @param rows  显示行数
-     * @param condition  查询条件
+     * @param page      当前页数
+     * @param rows      显示行数
+     * @param condition 查询条件
      * @return cn.wisdsoft.pojo.PageResult<cn.wisdsoft.ddms.pojo.Teacher>
      * @date 18:49 2018/9/20
      */
@@ -89,7 +89,7 @@ public interface TeacherService {
     /**
      * 通过id查询单个教师信息
      *
-     * @param id  教师id
+     * @param id 教师id
      * @return cn.wisdsoft.ddms.pojo.Teacher
      * @date 19:47 2018/9/27
      */
@@ -98,10 +98,12 @@ public interface TeacherService {
     /**
      * 导入Excel
      *
-     * @param lists  Excel数据
+     * @param lists Excel数据
      * @return cn.wisdsoft.pojo.DdmsResult
      * @date 11:08 2018/9/29
      */
     DdmsResult importExcel(List<List<Object>> lists);
+
+    List<Teacher> selectByIdArrayTeacher(String[] id);
 
 }

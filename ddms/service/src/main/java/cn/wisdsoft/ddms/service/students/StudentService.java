@@ -1,7 +1,8 @@
 package cn.wisdsoft.ddms.service.students;
 
-import cn.wisdsoft.ddms.pojo.Clazz;
+import cn.wisdsoft.ddms.pojo.Major;
 import cn.wisdsoft.ddms.pojo.Student;
+import cn.wisdsoft.pojo.DdmsResult;
 import cn.wisdsoft.pojo.PageResult;
 
 import java.util.List;
@@ -13,85 +14,128 @@ import java.util.List;
  * @ Modified By：
  */
 public interface StudentService {
-    /**
-     * 方法实现说明
-     * @author 高伟萌
-     * @Description 查询所有学生业务层
-     * @Date 2018-09-20 17:16
-     * @param page 当前页数
-     * @param limit 每页数量
-     * @return cn.wisdsoft.pojo.PageResult<cn.wisdsoft.ddms.pojo.Student>
-     */
-    PageResult<Student> queryAllStudent(int page, int limit);
-    
-    /**
-     * @Author Mr.Gao
-     * @Description 查询所有第一次被删除的学生（用于数据恢复）
-     * @Date 2018/9/24 18:17
-     * @Param [page, limit]
-     * @return cn.wisdsoft.pojo.PageResult<cn.wisdsoft.ddms.pojo.Student>
-     */
-    PageResult<Student> queryAllDelStudent(int page, int limit);
 
     /**
-     * @Author Mr.Gao
-     * @Description 根据条件对学生列表进行筛选
-     * @Date 2018/9/25 23:08
-     * @Param [stuId, stuName, stuClass, page, limit]
-     * @return cn.wisdsoft.pojo.PageResult<cn.wisdsoft.ddms.pojo.Student>
+     * Select all student ddms result.
+     * 查询所有学生信息
+     *
+     * @param page    the page  当前页数
+     * @param limit   the limit  每页数量
+     * @param delFlag the del flag
+     * @return the ddms result
      */
-    PageResult<Student> filterStudent(String stuId,String stuName,String stuClass,String delFlag,int page,int limit);
+    PageResult selectAllStudent(int page,int limit,int delFlag);
 
     /**
-     * @Author Mr.Gao
-     * @Description 根据ID查询单个学生
-     * @Date 2018/9/22 17:17
-     * @Param [id]
-     * @return cn.wisdsoft.ddms.pojo.Student
+     * Select all major name ddms result.
+     * 查询所有专业名称
+     *
+     * @return the ddms result
      */
-    Student queryStudentById(int id);
+    List<Major> selectAllMajorName();
 
     /**
-     * @Author Mr.Gao
-     * @Description 查询所有班级名称
-     * @Date 2018/9/26 16:43
-     * @Param []
-     * @return java.util.List<cn.wisdsoft.ddms.pojo.Clazz>
+     * Select time by major id ddms result.
+     * 根据专业编号查询学制
+     *
+     * @param majorId the major id
+     * @return the ddms result
      */
-    List<Clazz> queryAllClazzName();
-
-    /** * @Author Mr.Gao
-     * @Description 根据ID删除学生（将stu_delFlag由0变为1）
-     * @Date 2018/9/23 22:41
-     * @Param [id]
-     * @return cn.wisdsoft.pojo.DdmsResult
-     */
-    int firstDelStudent(int id);
+    DdmsResult selectTimeByMajorId(String majorId);
 
     /**
-     * @Author Mr.Gao
-     * @Description 根据ID更新学生信息
-     * @Date 2018/9/24 11:21
-     * @Param [student]
-     * @return int
+     * Insert one student ddms result.
+     * 插入一条学生信息
+     *
+     * @param student the student
+     * @return the ddms result
      */
-    int updateStudent(Student student);
+    DdmsResult insertOneStudent(Student student);
 
     /**
-     * @Author Mr.Gao
-     * @Description 根据ID彻底删除学生
-     * @Date 2018/9/24 19:23
-     * @Param [id]
-     * @return int
+     * Select one student ddms result.
+     * 查询单条学生信息
+     *
+     * @param id the id  学生学号
+     * @return the ddms result
      */
-    int secondDelStudent(int id);
+    DdmsResult selectOneStudent(String id);
 
     /**
-     * @Author Mr.Gao
-     * @Description 根据ID恢复第一次被删除的学生
-     * @Date 2018/9/24 22:02
-     * @Param [id]
-     * @return int
+     * Update one student ddms result.
+     * 更新学生信息
+     *
+     * @param student the student  学生POJO对象
+     * @return the ddms result
      */
-    int restoreStudent(int[] id);
+    DdmsResult updateOneStudent(Student student);
+
+    /**
+     * Filter student list page result.
+     * 筛选学生信息
+     *
+     * @param stuId    the stu id  学生ID
+     * @param stuName  the stu name  学生姓名
+     * @param stuMajor the stu major  学生专业
+     * @param delFlag  the del flag  是否删除标记
+     * @param page     the page  当前页数
+     * @param limit    the limit  每页数量
+     * @return the page result
+     */
+    PageResult filterStudentList(String stuId,String stuName,String stuMajor,int delFlag,int page,int limit);
+
+    /**
+     * Delete student first ddms result.
+     * 第一次删除学生
+     *
+     * @param id      the id
+     * @param delFlag the del flag
+     * @return the ddms result
+     */
+    DdmsResult deleteStudentFirst(String id,int delFlag);
+
+    /**
+     * Select major id by major name string.
+     * 根据专业名称查询专业ID
+     *
+     * @param majorName the major name  专业名称
+     * @return the string
+     */
+    String selectMajorNameByMajorId(String majorName);
+
+    /**
+     * Delete student second ddms result.
+     * 从数据库删除学生信息
+     *
+     * @param id the id  学生ID
+     * @return the ddms result
+     */
+    DdmsResult deleteStudentSecond(String id);
+
+    /**
+     * Restore student ddms result.
+     * 学生数据恢复
+     *
+     * @param id the id  学生ID
+     * @return the ddms result
+     */
+    DdmsResult restoreStudent(String[] id);
+
+    /**
+     * Select student by ids list.
+     * 根据ID数组查询多个学生
+     *
+     * @param id the id  学生ID数组
+     * @return the list
+     */
+    List<Student> selectStudentByIds(String[] id);
+
+    /**
+     * Insert export list ddms result.
+     * 导入Excel
+     *
+     * @param list the list
+     * @return the ddms result
+     */
+    DdmsResult insertExportList(List<List<Object>> list);
 }

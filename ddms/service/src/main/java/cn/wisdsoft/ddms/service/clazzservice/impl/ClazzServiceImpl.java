@@ -29,24 +29,26 @@ public class ClazzServiceImpl implements ClazzService {
     private CollegeMapper collegeMapper;
     @Autowired
     private MajorMapper majorMapper;
+
     /**
+     * @return
      * @Author 李泽宇
      * @Description //TODO 添加班级信息
      * @Date 2018/9/19 21:46
      * @Param
-     * @return
      **/
     @Override
     public DdmsResult addClazz(Clazz clazz) {
         clazzMapper.insert(clazz);
         return DdmsResult.ok();
     }
+
     /**
+     * @return
      * @Author 李泽宇
      * @Description //TODO 更改班级信息
      * @Date 2018/9/19 21:46
      * @Param
-     * @return
      **/
     @Override
     public DdmsResult updateClazz(Clazz clazz) {
@@ -55,39 +57,40 @@ public class ClazzServiceImpl implements ClazzService {
     }
 
     /**
+     * @return
      * @Author 李泽宇
      * @Description //TODO 删除班级信息
      * @Date 2018/9/19 21:47
      * @Param
-     * @return
      **/
     @Override
     public DdmsResult delClazz(String classid) {
         clazzMapper.deleteByPrimaryKey(classid);
         return DdmsResult.ok();
     }
-/**
- * @Author 李泽宇
- * @Description //TODO 通过班级名称或专业id查询信息
- * @Date 2018/9/26 8:46 
- * @Param 
- * @return 
- **/
+
+    /**
+     * @return
+     * @Author 李泽宇
+     * @Description //TODO 通过班级名称或专业id查询信息
+     * @Date 2018/9/26 8:46
+     * @Param
+     **/
     @Override
-    public PageResult queryClazzByNameOrmajorName(Clazz clazz,int page, int limit) {
+    public PageResult queryClazzByNameOrmajorName(Clazz clazz, int page, int limit) {
         PageHelper.startPage(page, limit);
         List<Clazz> list = clazzMapper.selectByclazzNameOrmajorName(clazz);
         PageInfo<Clazz> info = new PageInfo<>(list);
-        return PageResult.ok(list,info.getTotal());
+        return PageResult.ok(list, info.getTotal());
     }
 
-/**
- * @Author 李泽宇
- * @Description //TODO 查询所有班级信息（分页）
- * @Date 2018/9/26 8:49 
- * @Param 
- * @return 
- **/
+    /**
+     * @return
+     * @Author 李泽宇
+     * @Description //TODO 查询所有班级信息（分页）
+     * @Date 2018/9/26 8:49
+     * @Param
+     **/
     @Override
     public PageResult<Clazz> queryAllClazz(int rows, int limit) {
         ClazzExample example = new ClazzExample();
@@ -95,15 +98,16 @@ public class ClazzServiceImpl implements ClazzService {
         PageHelper.startPage(rows, limit);
         List<Clazz> list = clazzMapper.selectByExample(example);
         PageInfo<Clazz> info = new PageInfo<>(list);
-        return PageResult.ok(list,info.getTotal());
+        return PageResult.ok(list, info.getTotal());
     }
-/**
- * @Author 李泽宇
- * @Description //TODO 根据id查询班级信息
- * @Date 2018/9/26 8:55
- * @Param
- * @return
- **/
+
+    /**
+     * @return
+     * @Author 李泽宇
+     * @Description //TODO 根据id查询班级信息
+     * @Date 2018/9/26 8:55
+     * @Param
+     **/
     @Override
     public List<Clazz> selectClazzAccrodingtoid(String id) {
         ClazzExample example = new ClazzExample();
@@ -112,62 +116,66 @@ public class ClazzServiceImpl implements ClazzService {
         List<Clazz> clazzes = clazzMapper.selectByExample(example);
         return clazzes;
     }
-/**
- * @Author 李泽宇
- * @Description //TODO 无条件查询和班级有关的信息，不分页
- * @Date 2018/9/26 8:55
- * @Param
- * @return
- **/
+
+    /**
+     * @return
+     * @Author 李泽宇
+     * @Description //TODO 无条件查询和班级有关的信息，不分页
+     * @Date 2018/9/26 8:55
+     * @Param
+     **/
     @Override
     public List<Clazz> selClazz() {
         List<Clazz> list = clazzMapper.selectAllClazz();
         return list;
     }
-/**
- * @Author 李泽宇
- * @Description //TODO 查询所有专业
- * @Date 2018/9/26 10:41 
- * @Param 
- * @return 
- **/
+
+    /**
+     * @return
+     * @Author 李泽宇
+     * @Description //TODO 查询所有专业
+     * @Date 2018/9/26 10:41
+     * @Param
+     **/
     @Override
     public List<Major> selMajor() {
         MajorExample example = new MajorExample();
         List<Major> list = majorMapper.selectByExample(example);
         return list;
     }
-/**
- * @Author 李泽宇
- * @Description //TODO 查询所有学院
- * @Date 2018/9/26 10:43
- * @Param 
- * @return 
- **/
+
+    /**
+     * @return
+     * @Author 李泽宇
+     * @Description //TODO 查询所有学院
+     * @Date 2018/9/26 10:43
+     * @Param
+     **/
     @Override
     public List<College> selCollege() {
         CollegeExample example = new CollegeExample();
         List<College> list = collegeMapper.selectByExample(example);
         return list;
     }
-/**
- * @Author 李泽宇
- * @Description //TODO 查询所有和班级有关的信息
- * @Date 2018/9/26 18:03
- * @Param
- * @return
- **/
+
+    /**
+     * @return
+     * @Author 李泽宇
+     * @Description //TODO 查询所有和班级有关的信息
+     * @Date 2018/9/26 18:03
+     * @Param
+     **/
     @Override
     public PageResult<Clazz> selAllClazz(int rows, int limit) {
         PageHelper.startPage(rows, limit);
         List<Clazz> list = clazzMapper.selectAllClazz();
         PageInfo<Clazz> info = new PageInfo<>(list);
-        return PageResult.ok(list,info.getTotal());
+        return PageResult.ok(list, info.getTotal());
     }
 
     @Override
     public String selclazzmaxid() {
-        synchronized(this) {
+        synchronized (this) {
             String selclazzmaxid = clazzMapper.selclazzmaxid();
             return selclazzmaxid;
         }

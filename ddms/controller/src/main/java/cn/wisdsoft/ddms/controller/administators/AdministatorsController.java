@@ -40,16 +40,16 @@ public class AdministatorsController {
      */
     @RequestMapping(value = "/judge")
     @ResponseBody
-    public DdmsResult loginJudge(String username, String password, HttpServletRequest request){
+    public DdmsResult loginJudge(String username, String password, HttpServletRequest request) {
         DdmsResult ddmsResult = new DdmsResult();
         HttpSession session = request.getSession();
         Administrators administrators = administratorsService.queryAdminByAccnumAndPassword(username, password);
-        if(administrators != null){
+        if (administrators != null) {
             ddmsResult.setStatus(200);
             ddmsResult.setMsg("success");
             administrators.setAdminPassword(null);
-            session.setAttribute("administrator",administrators);
-        }else{
+            session.setAttribute("administrator", administrators);
+        } else {
             ddmsResult.setStatus(400);
             ddmsResult.setMsg("error");
         }
@@ -66,7 +66,7 @@ public class AdministatorsController {
      * @date 2018 -09-19 11:24
      */
     @RequestMapping(value = "/loginToIndex")
-    public String loginToIndex(){
+    public String loginToIndex() {
         return "common/index";
     }
 
@@ -80,17 +80,18 @@ public class AdministatorsController {
      * @date 2018 -09-19 11:24
      */
     @RequestMapping(value = "/login")
-    public String login(){
+    public String login() {
         return "login";
     }
 
     /**
      * Go to add admin string.
      * TODO
+     *
      * @return the string
      */
     @RequestMapping("/goToAddAdmin")
-    public String goToAddAdmin(){
+    public String goToAddAdmin() {
         return "common/addAdministrator";
     }
 
@@ -101,12 +102,12 @@ public class AdministatorsController {
      * @param limit the limit
      * @return the page result
      */
-    @RequestMapping(value = "/configDelAdminList",method = RequestMethod.GET)
+    @RequestMapping(value = "/configDelAdminList", method = RequestMethod.GET)
     @ResponseBody
-    public PageResult configDelList(int page, int limit){
-        if(page == 1){
+    public PageResult configDelList(int page, int limit) {
+        if (page == 1) {
             page = 0;
-        }else{
+        } else {
             page = (page - 1) * 10;
         }
         return administratorsService.queryAllAdmin(page, limit);
@@ -118,7 +119,7 @@ public class AdministatorsController {
      * @return the string
      */
     @RequestMapping("/goToDelAdmin")
-    public String goToDelAdmin(){
+    public String goToDelAdmin() {
         return "common/delAdministrator";
     }
 
@@ -128,9 +129,9 @@ public class AdministatorsController {
      * @param administrators the administrators
      * @return the ddms result
      */
-    @RequestMapping(value = "/addAdministrator",method = RequestMethod.POST)
+    @RequestMapping(value = "/addAdministrator", method = RequestMethod.POST)
     @ResponseBody
-    public DdmsResult addAdministrator(String administrators){
+    public DdmsResult addAdministrator(String administrators) {
         Administrators administrators1 = JsonUtils.jsonToPojo(administrators, Administrators.class);
         int i = administratorsService.addAdministrator(administrators1);
         return DdmsResult.ok(i);
@@ -143,9 +144,9 @@ public class AdministatorsController {
      * @param id the id
      * @return the ddms result
      */
-    @RequestMapping(value = "/delAdministrator",method = RequestMethod.POST)
+    @RequestMapping(value = "/delAdministrator", method = RequestMethod.POST)
     @ResponseBody
-    public DdmsResult delAdministrator(String id){
+    public DdmsResult delAdministrator(String id) {
 
         int flag = administratorsService.delAdministrator(Integer.parseInt(id));
         return DdmsResult.ok(flag);
@@ -157,7 +158,7 @@ public class AdministatorsController {
      * @return the string
      */
     @RequestMapping("/goToUpdatePwd")
-    public String goToUpdatePwd(){
+    public String goToUpdatePwd() {
         return "common/updatePwd";
     }
 
@@ -169,24 +170,31 @@ public class AdministatorsController {
      * @param request the request
      * @return the ddms result
      */
-    @RequestMapping(value = "/updatePwdByAccnum",method = RequestMethod.POST)
+    @RequestMapping(value = "/updatePwdByAccnum", method = RequestMethod.POST)
     @ResponseBody
-    public DdmsResult updatePwdByAccnum(String oldPwd,String newPwd,HttpServletRequest request){
+    public DdmsResult updatePwdByAccnum(String oldPwd, String newPwd, HttpServletRequest request) {
         HttpSession session = request.getSession();
         Administrators administrator = (Administrators) session.getAttribute("administrator");
         if (administrator != null) {
             String accNum = administrator.getAdminAccnum();
             Administrators currentAdministrator = administratorsService.queryPwdByAccnum(accNum);
             String currentPwd = currentAdministrator.getAdminPassword();
-            if(oldPwd.equals(currentPwd)){
+            if (oldPwd.equals(currentPwd)) {
                 int i = administratorsService.updatePwdByAccnum(accNum, newPwd);
                 session.removeAttribute("administrator");
                 return DdmsResult.ok(i);
-            }else{
+            } else {
                 return DdmsResult.ok("请输入正确的旧密码");
             }
-        }else{
+        } else {
             return DdmsResult.ok("未查询到用户信息");
         }
+    }
+
+    @RequestMapping(value = "/outLogin",method = RequestMethod.POST)
+    @ResponseBody
+    public String outLogin(HttpSession session){
+        session.removeAttribute("administrator");
+        return "/jsp/login";
     }
 }

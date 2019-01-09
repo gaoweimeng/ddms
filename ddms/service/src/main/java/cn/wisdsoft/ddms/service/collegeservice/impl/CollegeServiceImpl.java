@@ -25,64 +25,69 @@ public class CollegeServiceImpl implements CollegeService {
 
     @Autowired
     private CollegeMapper collegeMapper;
+
     /**
+     * @return
      * @Author 李泽宇
      * @Description //TODO 添加学院信息
      * @Date 2018/9/19 20:51
      * @Param
-     * @return
      **/
 
     public DdmsResult addCollege(College college) {
         collegeMapper.insert(college);
         return DdmsResult.ok();
     }
-/**
- * @Author 李泽宇
- * @Description //TODO 删除学院信息
- * @Date 2018/9/19 20:51
- * @Param
- * @return
- **/
+
+    /**
+     * @return
+     * @Author 李泽宇
+     * @Description //TODO 删除学院信息
+     * @Date 2018/9/19 20:51
+     * @Param
+     **/
 
     public DdmsResult delCollege(String id) {
         collegeMapper.deleteByPrimaryKey(id);
         return DdmsResult.ok();
     }
-/**
- * @Author 李泽宇
- * @Description //TODO 更改学院信息
- * @Date 2018/9/19 20:52
- * @Param
- * @return
- **/
+
+    /**
+     * @return
+     * @Author 李泽宇
+     * @Description //TODO 更改学院信息
+     * @Date 2018/9/19 20:52
+     * @Param
+     **/
 
     public DdmsResult updateCollege(College college) {
         collegeMapper.updateByPrimaryKey(college);
         return DdmsResult.ok();
     }
-/**
- * @Author 李泽宇
- * @Description //TODO 查询所有学院信息
- * @Date 2018/9/19 20:52
- * @Param
- * @return
- **/
+
+    /**
+     * @return
+     * @Author 李泽宇
+     * @Description //TODO 查询所有学院信息
+     * @Date 2018/9/19 20:52
+     * @Param
+     **/
     public PageResult<College> queryAllCollege(int rows, int limit) {
-            CollegeExample example = new CollegeExample();
-            //将分页的行和一页多少数据，传入
-            PageHelper.startPage(rows, limit);
-            List<College> list = collegeMapper.selectByExample(example);
-            PageInfo<College> info = new PageInfo<>(list);
-            return PageResult.ok(list,info.getTotal());
-        }
-/**
- * @Author 李泽宇
- * @Description //TODO 根据id 查询学院信息
- * @Date 2018/9/25 16:30 
- * @Param 
- * @return 
- **/
+        CollegeExample example = new CollegeExample();
+        //将分页的行和一页多少数据，传入
+        PageHelper.startPage(rows, limit);
+        List<College> list = collegeMapper.selectByExample(example);
+        PageInfo<College> info = new PageInfo<>(list);
+        return PageResult.ok(list, info.getTotal());
+    }
+
+    /**
+     * @return
+     * @Author 李泽宇
+     * @Description //TODO 根据id 查询学院信息
+     * @Date 2018/9/25 16:30
+     * @Param
+     **/
     @Override
     public List<College> selectCollegeAccrodingtoid(String id) {
         CollegeExample example = new CollegeExample();
@@ -91,12 +96,13 @@ public class CollegeServiceImpl implements CollegeService {
         List<College> colleges = collegeMapper.selectByExample(example);
         return colleges;
     }
+
     /**
+     * @return
      * @Author 李泽宇
      * @Description //TODO 查询所有学院
-     * @Date 2018/9/25 16:51 
-     * @Param 
-     * @return 
+     * @Date 2018/9/25 16:51
+     * @Param
      **/
     @Override
     public List<College> selcollege() {
@@ -104,24 +110,25 @@ public class CollegeServiceImpl implements CollegeService {
         List<College> list = collegeMapper.selectByExample(example);
         return list;
     }
-/**
- * @Author 李泽宇
- * @Description //TODO 根据名称查询学院
- * @Date 2018/9/25 16:51 
- * @Param 
- * @return 
- **/
+
+    /**
+     * @return
+     * @Author 李泽宇
+     * @Description //TODO 根据名称查询学院
+     * @Date 2018/9/25 16:51
+     * @Param
+     **/
     @Override
-    public PageResult<College> queryCollegeByName(College college,int page, int limit) {
+    public PageResult<College> queryCollegeByName(College college, int page, int limit) {
         PageHelper.startPage(page, limit);
         List<College> list = collegeMapper.queryBycollegeName(college);
         PageInfo<College> info = new PageInfo<>(list);
-        return PageResult.ok(list,info.getTotal());
+        return PageResult.ok(list, info.getTotal());
     }
 
     @Override
     public String selcollegemaxid() {
-        synchronized(this) {
+        synchronized (this) {
             String selcollegemaxid = collegeMapper.selcollegemaxid();
             return selcollegemaxid;
         }

@@ -5,7 +5,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ page isELIgnored="false" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
@@ -15,8 +15,9 @@
     <title>教师信息添加</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <meta name="viewport"
+          content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi"/>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="/css/font.css">
     <link rel="stylesheet" href="/css/xadmin.css">
     <%--<link rel="stylesheet" type="text/css" href="/js/layui/css/layui.css">--%>
@@ -36,7 +37,8 @@
         <div class="layui-form-item">
             <img id="image" width="92.7px" height="125px" style="border: 1px solid red"><br/>
         </div>
-        <button type="button" class="layui-btn layui-btn-normal" id="test8"><i class="layui-icon">&#xe67c;</i>上传图片</button>
+        <button type="button" class="layui-btn layui-btn-normal" id="test8"><i class="layui-icon">&#xe67c;</i>上传图片
+        </button>
     </div>
     <form class="layui-form">
         <div class="layui-form-item">
@@ -51,7 +53,7 @@
                 <span class="x-red">*</span>名称
             </label>
             <div class="layui-input-inline">
-                <input type="text" id="L_teaName"name="teaName" required="" lay-verify="required"
+                <input type="text" id="L_teaName" name="teaName" required="" lay-verify="required"
                        autocomplete="off" class="layui-input">
             </div>
         </div>
@@ -78,7 +80,7 @@
                 出生日期
             </label>
             <div class="layui-input-inline">
-                <input type="text" id="L_teaBirthdate"  name="teaBirthdate"
+                <input type="text" id="L_teaBirthdate" name="teaBirthdate"
                        autocomplete="off" class="layui-input">
             </div>
             <label for="L_teaPhone" class="layui-form-label">
@@ -102,7 +104,9 @@
             </label>
             <div class="layui-input-inline">
                 <select id="L_teaNation" name="teaNation">
-                    <option value="汉">汉</option>
+                    <c:forEach items="${nation}" var="x">
+                        <option value="${x.name}">${x.name}</option>
+                    </c:forEach>
                 </select>
             </div>
         </div>
@@ -118,7 +122,7 @@
                 <span class="x-red">*</span>现住址
             </label>
             <div class="layui-input-inline">
-                <input type="text" id="L_teaAddress"  name="teaAddress" lay-verify="required"
+                <input type="text" id="L_teaAddress" name="teaAddress" lay-verify="required"
                        autocomplete="off" class="layui-input">
             </div>
         </div>
@@ -128,9 +132,9 @@
             </label>
             <div class="layui-input-inline">
                 <select id="L_teaPoliticalface" name="teaPoliticalface">
-                    <option value="党员" >党员</option>
-                    <option value="团员" >团员</option>
-                    <option value="群众" >群众</option>
+                    <option value="党员">党员</option>
+                    <option value="团员">团员</option>
+                    <option value="群众">群众</option>
                 </select>
             </div>
             <label for="L_teaIdcard" class="layui-form-label">
@@ -154,8 +158,8 @@
             </label>
             <div class="layui-input-inline">
                 <select id="L_teaMaritalstatus" name="teaMaritalstatus">
-                    <option value="未婚" >未婚</option>
-                    <option value="已婚" >已婚</option>
+                    <option value="未婚">未婚</option>
+                    <option value="已婚">已婚</option>
                 </select>
             </div>
         </div>
@@ -181,7 +185,7 @@
             </label>
             <div class="layui-input-inline">
                 <input type="text" id="L_teaCjny" name="teaCjny"
-                autocomplete="off" class="layui-input">
+                       autocomplete="off" class="layui-input">
             </div>
             <label for="L_teaCredentialstime" class="layui-form-label">
                 <span class="x-red">*</span>教师资格证获取时间
@@ -213,8 +217,8 @@
             </label>
             <div class="layui-input-inline">
                 <select id="L_teaType" name="teaType">
-                    <option value="本校" >本校</option>
-                    <option value="外聘" >外聘</option>
+                    <option value="本校">本校</option>
+                    <option value="外聘">外聘</option>
                 </select>
             </div>
             <label for="L_teaCampus" class="layui-form-label">
@@ -229,7 +233,7 @@
         <div class="layui-form-item">
             <label for="L_repass" class="layui-form-label">
             </label>
-            <button  class="layui-btn" lay-filter="add" lay-submit="">
+            <button class="layui-btn" lay-filter="add" lay-submit="">
                 增加
             </button>
         </div>

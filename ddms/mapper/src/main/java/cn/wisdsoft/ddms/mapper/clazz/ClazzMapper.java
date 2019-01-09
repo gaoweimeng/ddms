@@ -30,65 +30,66 @@ public interface ClazzMapper {
     int updateByPrimaryKey(Clazz record);
 
     /**
+     * @return
      * @Author 李泽宇
      * @Description //TODO 通过班级名称或者专业名称（和专业表联合查询）模糊查询班级信息
      * @Date 2018/9/19 21:30
      * @Param
-     * @return
      **/
     List<Clazz> selectByclazzNameOrmajorName(Clazz clazz);
 
     /**
+     * @return
      * @Author 李泽宇
      * @Description //TODO 根据id查班级名称（高伟萌要的方法1）
      * @Date 2018/9/20 16:28
      * @Param
-     * @return
      **/
     Clazz selectNameById(String id);
 
     /**
+     * @return
      * @Author 李泽宇
      * @Description //TODO 根据班级名称查询id（高伟萌要的方法2）
      * @Date 2018/9/26 8:09
      * @Param
-     * @return
      **/
     Clazz selectIdByName(String clazzName);
-    
+
     /**
+     * @return
      * @Author 李泽宇
      * @Description //TODO 查询所有名称（高伟萌要的方法3）
-     * @Date 2018/9/26 8:11 
-     * @Param 
-     * @return 
+     * @Date 2018/9/26 8:11
+     * @Param
      **/
     List<Clazz> selectAllName();
+
     /**
+     * @return
      * @Author 李泽宇
      * @Description //TODO 查询所有和班级有关的信息
      * @Date 2018/9/26 17:51
      * @Param
-     * @return
      **/
     List<Clazz> selectAllClazz();
 
     /**
+     * @return
      * @Author 李泽宇
      * @Description //TODO 查询最大id
      * @Date 2018/9/27 20:01
      * @Param
-     * @return
      **/
     String selclazzmaxid();
-    
+
     /**
      * @Author 李泽宇
      * @Description //TODO 插入信息，留着导入用
      * 此功能停用
      * @Date 2018/9/29 17:18
-     * @Param 
-     * @return 
+     * @Param
+     * @return
      **/
 //    int insertSalesClazz(@Param("list") List<String[]> list);
 }

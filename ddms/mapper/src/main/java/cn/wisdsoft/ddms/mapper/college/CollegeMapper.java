@@ -20,6 +20,7 @@ public interface CollegeMapper {
     List<College> selectByExample(CollegeExample example);
 
     College selectByPrimaryKey(String id);
+
     int updateByExampleSelective(@Param("record") College record, @Param("example") CollegeExample example);
 
     int updateByExample(@Param("record") College record, @Param("example") CollegeExample example);
@@ -29,19 +30,20 @@ public interface CollegeMapper {
     int updateByPrimaryKey(College record);
 
     /**
+     * @return
      * @Author 李泽宇
      * @Description //TODO 通过名称查询学院信息
      * @Date 2018/9/19 21:09
      * @Param
-     * @return
      **/
     List<College> queryBycollegeName(College college);
+
     /**
+     * @return
      * @Author 李泽宇
      * @Description //TODO 查询最大id
      * @Date 2018/9/27 19:40
      * @Param
-     * @return
      **/
 
     String selcollegemaxid();

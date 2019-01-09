@@ -12,7 +12,7 @@ public class Clazz {
     private String collegeid;
 
     private String remark;
-//为了在管理页面显示名称后加的属性
+    //为了在管理页面显示名称后加的属性
     private String majorName;
 
     private String collegeName;

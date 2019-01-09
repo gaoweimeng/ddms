@@ -39,7 +39,7 @@
             </label>
             <div class="layui-input-inline">
                 <input type="text" id="L_id" value="${ clazzRoom.id }" disabled name="id" required=""
-                       autocomplete="off" class="layui-input" />
+                       autocomplete="off" class="layui-input"/>
             </div>
         </div>
         <div class="layui-form-item">
@@ -57,7 +57,7 @@
             </label>
             <div class="layui-input-inline">
                 <input type="text" id="L_crRoomnum" value="${ clazzRoom.crRoomnum }" name="crRoomnum" required=""
-                        autocomplete="off" class="layui-input">
+                       autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
@@ -75,8 +75,12 @@
             </label>
             <div class="layui-input-inline">
                 <select name="crType" id="L_crType">
-                    <option value="机房" <c:if test="${ clazzRoom.crType eq '机房'}">selected</c:if> >机房</option>
-                    <option value="公共教室" <c:if test="${ clazzRoom.crType eq '公共教室' }">selected</c:if> >公共教室</option>
+                    <option value="机房"
+                            <c:if test="${ clazzRoom.crType eq '机房'}">selected</c:if> >机房
+                    </option>
+                    <option value="公共教室"
+                            <c:if test="${ clazzRoom.crType eq '公共教室' }">selected</c:if> >公共教室
+                    </option>
                 </select>
             </div>
         </div>

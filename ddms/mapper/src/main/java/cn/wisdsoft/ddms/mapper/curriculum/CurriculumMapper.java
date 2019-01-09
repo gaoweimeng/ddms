@@ -32,24 +32,28 @@ public interface CurriculumMapper {
     int updateByPrimaryKey(Curriculum record);
 
     /**
-     *  查询最大id
+     * 查询最大id
      * songjunwei
      * 2018年9月23日 下午10:35:42
+     *
      * @return
      */
     String selcurriculumMaxID();
+
     /**
      * 根据课程名称和课程类型 课时查询 并分页
      * songjunwei
      * 2018年9月24日 上午11:28:47
+     *
      * @return
      */
     List<Curriculum> selCurriAccordingtoName(@Param("names") String names);
-    
+
     /**
      * 批量插入数据
      * songjunwei
      * 2018年9月29日 下午5:30:54
+     *
      * @param list
      * @return
      */

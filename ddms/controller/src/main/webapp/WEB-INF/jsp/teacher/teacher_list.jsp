@@ -19,6 +19,7 @@
 <body>
 <div style="padding: 15px;">
     <div class="demoTable" style="text-align: center;margin-top: 15px;">
+        请搜索：
         <div class="layui-inline">
             <input class="layui-input" id="search" autocomplete="off">
         </div>
@@ -26,11 +27,11 @@
     </div>
 </div>
 <xblock>
-    <button style="float: right" class="layui-btn" onclick="x_admin_show('添加教师','/teacher/add',1000,500)"><i class="layui-icon"></i>添加
+    <button class="layui-btn layui-btn-sm" onclick="x_admin_show('添加教师','/teacher/add',1000,500)"><i class="layui-icon"></i>添加
     </button>
-    <button class="layui-btn" id="importExcel">批量导入</button>
-    <button class="layui-btn">批量导出</button>
-    <button class="layui-btn" id="exportAll">全部导出</button>
+    <button class="layui-btn layui-btn-sm" id="importExcel">批量导入</button>
+    <button class="layui-btn layui-btn-sm" id="downloadTheTemplate">下载模板</button>
+    <button class="layui-btn layui-btn-sm" id="exportAll">导出</button>
 </xblock>
 
 <table class="layui-hide" id="teacher" lay-filter="test"></table>
@@ -39,10 +40,6 @@
 </body>
 
 <script type="text/javascript" src="/js/layui/layui.js"></script>
-
-<script type="text/html" id="toolbarDemo">
-
-</script>
 
 <script type="text/html" id="barDemo">
     <button class="layui-btn layui-btn-sm" lay-event="update">编辑</button>

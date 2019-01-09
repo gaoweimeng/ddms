@@ -39,7 +39,7 @@
             </label>
             <div class="layui-input-inline">
                 <input type="text" id="L_id" name="id" required=""
-                       autocomplete="off" class="layui-input" />
+                       autocomplete="off" class="layui-input"/>
             </div>
         </div>
         <div class="layui-form-item">
@@ -57,7 +57,7 @@
             </label>
             <div class="layui-input-inline">
                 <input type="text" id="L_crRoomnum" name="crRoomnum" required=""
-                        autocomplete="off" class="layui-input">
+                       autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">

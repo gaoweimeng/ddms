@@ -30,10 +30,11 @@ public class TeacherServiceImpl implements TeacherService {
 
     /**
      * 添加教师
-     * @date 10:54 2018/9/19
+     *
      * @param [teacher]
      * @return cn.wisdsoft.pojo.DdmsResult
      * @throws
+     * @date 10:54 2018/9/19
      */
     @Override
     public DdmsResult addTeacher(Teacher teacher) {
@@ -43,10 +44,11 @@ public class TeacherServiceImpl implements TeacherService {
 
     /**
      * 查询所有教师
-     * @date 10:59 2018/9/19
+     *
      * @param []
      * @return cn.wisdsoft.pojo.DdmsResult
      * @throws
+     * @date 10:59 2018/9/19
      */
     @Override
     public DdmsResult queryAllTeacher() {
@@ -57,10 +59,11 @@ public class TeacherServiceImpl implements TeacherService {
 
     /**
      * 更新教师信息
-     * @date 16:06 2018/9/19
+     *
      * @param [teacher]
      * @return cn.wisdsoft.pojo.DdmsResult
      * @throws
+     * @date 16:06 2018/9/19
      */
     @Override
     public DdmsResult updateTeacher(Teacher teacher) {
@@ -70,10 +73,11 @@ public class TeacherServiceImpl implements TeacherService {
 
     /**
      * 通过条件查询
-     * @date 18:01 2018/9/19
+     *
      * @param [condition 查询条件]
      * @return cn.wisdsoft.pojo.DdmsResult
      * @throws
+     * @date 18:01 2018/9/19
      */
     @Override
     public DdmsResult queryCondition(String condition) {
@@ -97,8 +101,8 @@ public class TeacherServiceImpl implements TeacherService {
     /**
      * 无条件分页
      *
-     * @param page  当前页数
-     * @param rows  显示行数
+     * @param page 当前页数
+     * @param rows 显示行数
      * @return cn.wisdsoft.pojo.PageResult<cn.wisdsoft.ddms.pojo.Teacher>
      * @date 17:19 2018/9/20
      */
@@ -114,9 +118,9 @@ public class TeacherServiceImpl implements TeacherService {
     /**
      * 通过条件查询分页
      *
-     * @param page  当前页数
-     * @param rows  显示行数
-     * @param condition  查询条件
+     * @param page      当前页数
+     * @param rows      显示行数
+     * @param condition 查询条件
      * @return cn.wisdsoft.pojo.PageResult<cn.wisdsoft.ddms.pojo.Teacher>
      * @date 18:49 2018/9/20
      */
@@ -131,7 +135,7 @@ public class TeacherServiceImpl implements TeacherService {
     /**
      * 通过id查询单个教师信息
      *
-     * @param id  教师id
+     * @param id 教师id
      * @return cn.wisdsoft.ddms.pojo.Teacher
      * @date 19:47 2018/9/27
      */
@@ -143,7 +147,7 @@ public class TeacherServiceImpl implements TeacherService {
     /**
      * 导入Excel
      *
-     * @param lists  Excel数据
+     * @param lists Excel数据
      * @return cn.wisdsoft.pojo.DdmsResult
      * @date 11:08 2018/9/29
      */
@@ -151,6 +155,11 @@ public class TeacherServiceImpl implements TeacherService {
     public DdmsResult importExcel(List<List<Object>> lists) {
         teacherMapper.importExcel(lists);
         return DdmsResult.ok();
+    }
+
+    @Override
+    public List<Teacher> selectByIdArrayTeacher(String[] id) {
+        return teacherMapper.selectByIdArrayTeacher(id);
     }
 
 }

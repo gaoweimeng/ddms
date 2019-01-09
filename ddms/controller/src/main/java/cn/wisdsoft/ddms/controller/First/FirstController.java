@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class FirstController {
 
     @RequestMapping(value = "/first")
-    public String first(){
+    public String first() {
         return "/first/first";
     }
 }

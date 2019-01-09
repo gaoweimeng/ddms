@@ -17,10 +17,10 @@
     <!--  配置分页插件  -->
     <plugins>
         <plugin interceptor="com.github.pagehelper.PageHelper">
-            <property name="dialect" value="Mysql" />
+            <property name="dialect" value="Mysql"/>
         </plugin>
     </plugins>
     <!--<typeAliases>-->
-        <!--<typeAlias type="" alias=""/>-->
+    <!--<typeAlias type="" alias=""/>-->
     <!--</typeAliases>-->
 </configuration>

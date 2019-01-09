@@ -24,12 +24,13 @@ public class AdministratorsServiceImpl implements AdministratorsService {
 
     /**
      * 方法实现说明
-     * @author 高伟萌
-     * @Description 通过用户名密码获取管理员实体
-     * @date 2018-09-19 21:08
+     *
      * @param username 用户名
      * @param password 密码
      * @return cn.wisdsoft.ddms.pojo.Administrators
+     * @author 高伟萌
+     * @Description 通过用户名密码获取管理员实体
+     * @date 2018-09-19 21:08
      */
     @Override
     public Administrators queryAdminByAccnumAndPassword(String username, String password) {
@@ -44,9 +45,9 @@ public class AdministratorsServiceImpl implements AdministratorsService {
 
     @Override
     public PageResult queryAllAdmin(int page, int limit) {
-        List<Administrators> administrators = administratorsMapper.queryAllAdmin(page,limit);
+        List<Administrators> administrators = administratorsMapper.queryAllAdmin(page, limit);
         int count = administratorsMapper.queryCountForAdministrator();
-        return PageResult.ok(administrators,count);
+        return PageResult.ok(administrators, count);
     }
 
     @Override

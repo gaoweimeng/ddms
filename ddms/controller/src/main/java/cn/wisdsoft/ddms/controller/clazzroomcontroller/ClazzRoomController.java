@@ -32,10 +32,11 @@ public class ClazzRoomController {
     public String clazzRoomPage() {
         return "clazzroom/clazzroom_list";
     }
+
     /**
      * 通过条件查询所有数据
      *
-     * @param condition  查询条件
+     * @param condition 查询条件
      * @return cn.wisdsoft.pojo.DdmsResult
      * @date 21:24 2018/9/24
      */
@@ -48,22 +49,22 @@ public class ClazzRoomController {
     /**
      * 通过查询条件查询所有数据并分页
      *
-     * @param page  当前页数
-     * @param limit  显示条数
-     * @param condition  查询条件
+     * @param page      当前页数
+     * @param limit     显示条数
+     * @param condition 查询条件
      * @return cn.wisdsoft.pojo.PageResult<cn.wisdsoft.ddms.pojo.ClazzRoom>
      * @date 21:39 2018/9/24
      */
     @RequestMapping(value = "/querypageacondition", method = RequestMethod.GET)
     @ResponseBody
     public PageResult<ClazzRoom> queryPageConditionPage(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "10") Integer limit, String condition) {
-        return clazzRoomService.queryPageConditionPage(page, limit , condition);
+        return clazzRoomService.queryPageConditionPage(page, limit, condition);
     }
 
     /**
      * 添加教室
      *
-     * @param result  教室的json字符串
+     * @param result 教室的json字符串
      * @return cn.wisdsoft.pojo.DdmsResult
      * @date 21:07 2018/9/25
      */
@@ -77,7 +78,7 @@ public class ClazzRoomController {
     /**
      * 删除教室
      *
-     * @param id  教室id
+     * @param id 教室id
      * @return cn.wisdsoft.pojo.DdmsResult
      * @date 21:11 2018/9/25
      */
@@ -91,7 +92,7 @@ public class ClazzRoomController {
      * 查询所有数据并分页
      *
      * @param page  当前页数
-     * @param limit  显示条数
+     * @param limit 显示条数
      * @return cn.wisdsoft.pojo.PageResult<cn.wisdsoft.ddms.pojo.ClazzRoom>
      * @date 21:19 2018/9/25
      */
@@ -104,7 +105,7 @@ public class ClazzRoomController {
     /**
      * 跳转编辑界面
      *
-     * @param result  前台json数据
+     * @param result 前台json数据
      * @param model
      * @return java.lang.String
      * @date 21:13 2018/9/27
@@ -119,7 +120,7 @@ public class ClazzRoomController {
     /**
      * 更新教室
      *
-     * @param result  前台json数据
+     * @param result 前台json数据
      * @return cn.wisdsoft.pojo.DdmsResult
      * @date 21:13 2018/9/27
      */

@@ -64,5 +64,5 @@ public interface AdministratorsService {
      * @param newPWD the new pwd
      * @return the int
      */
-    int updatePwdByAccnum(String accNum,String newPWD);
+    int updatePwdByAccnum(String accNum, String newPWD);
 }

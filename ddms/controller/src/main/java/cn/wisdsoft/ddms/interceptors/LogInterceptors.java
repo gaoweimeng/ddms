@@ -28,7 +28,7 @@ public class LogInterceptors extends HandlerInterceptorAdapter {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        if("GET".equals(request.getMethod())) {
+        if ("GET".equals(request.getMethod())) {
             return true;
         }
         HttpSession session = request.getSession();

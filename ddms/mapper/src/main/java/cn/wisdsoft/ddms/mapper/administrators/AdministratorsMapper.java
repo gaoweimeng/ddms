@@ -37,7 +37,7 @@ public interface AdministratorsMapper {
      * @param limit the limit
      * @return the list
      */
-    List<Administrators> queryAllAdmin(@Param("page") int page,@Param("limit") int limit);
+    List<Administrators> queryAllAdmin(@Param("page") int page, @Param("limit") int limit);
 
     /**
      * Query count for administrator int.
@@ -68,5 +68,5 @@ public interface AdministratorsMapper {
      * @param accNum the acc num
      * @return the int
      */
-    int updatePwdByAccNum(@Param("accNum") String accNum,@Param("newPwd") String newPwd);
+    int updatePwdByAccNum(@Param("accNum") String accNum, @Param("newPwd") String newPwd);
 }

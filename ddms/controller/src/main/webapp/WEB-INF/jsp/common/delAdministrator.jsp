@@ -9,7 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ page isELIgnored="false" %>
-<%@include file="/taglibs.jsp"%>
+<%@include file="/taglibs.jsp" %>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -19,37 +19,37 @@
     <script type="text/javascript" src="${ctx}/js/jquery-2.2.4-min.js"></script>
 </head>
 <body>
-    <table id="delList" lay-filter="delList"></table>
+<table id="delList" lay-filter="delList"></table>
 </body>
 <script type="text/javascript" src="${ctx }/js/layui/layui.js"></script>
 <script>
-    layui.use('table',function () {
+    layui.use('table', function () {
         var table = layui.table;
         table.render({
             elem: '#delList'
-            ,url: '${ctx}/configDelAdminList' //数据接口
-            ,page: true //开启分页
-            ,cols: [[ //表头
-                {field: 'id', title: 'id', width:80, sort: true, fixed: 'left'}
-                ,{field: 'adminAccnum', title: '用户名'}
-                ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:80}
+            , url: '${ctx}/configDelAdminList' //数据接口
+            , page: true //开启分页
+            , cols: [[ //表头
+                {field: 'id', title: 'id', width: 80, sort: true, fixed: 'left'}
+                , {field: 'adminAccnum', title: '用户名'}
+                , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 80}
             ]]
         });
         table.on('tool(delList)', function (obj) { //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
             var data = obj.data; //获得当前行数据
             var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
             var tr = obj.tr; //获得当前行 tr 的DOM对象
-            if (layEvent === 'del'){
+            if (layEvent === 'del') {
                 layer.confirm('真的删除么？', {
                     btn: ['朕决定了', '算了吧'] //按钮
                 }, function () {
                     $.ajax({
                         type: 'POST',
                         url: '${ctx}/delAdministrator',
-                        data:{
-                         id : data.id
+                        data: {
+                            id: data.id
                         }
-                        ,dataType: 'json',
+                        , dataType: 'json',
                         success: function (msg) {
                             if (msg.data === 1) {
                                 obj.del(); //删除对应行（tr）的DOM结构，并更新缓存

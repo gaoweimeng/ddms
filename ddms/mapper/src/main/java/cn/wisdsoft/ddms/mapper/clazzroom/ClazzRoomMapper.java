@@ -32,7 +32,7 @@ public interface ClazzRoomMapper {
     /**
      * 通过条件查询
      *
-     * @param condition  查询条件
+     * @param condition 查询条件
      * @return java.util.List<cn.wisdsoft.ddms.pojo.ClazzRoom>
      * @date 21:04 2018/9/24
      */
@@ -41,9 +41,9 @@ public interface ClazzRoomMapper {
     /**
      * 导入excel
      *
-     * @param list  excel数据
+     * @param list excel数据
      * @return int
      * @date 11:42 2018/9/29
      */
-    int importExcel(@Param("list")List list);
+    int importExcel(@Param("list") List list);
 }

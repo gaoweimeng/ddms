@@ -4,8 +4,7 @@ import org.apache.poi.hssf.usermodel.*;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.util.CellRangeAddressList;
 
-import javax.servlet.http.HttpServletResponse;
-import java.net.URLEncoder;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 /**
@@ -13,21 +12,22 @@ import java.util.regex.Pattern;
  *
  * @Author 高伟萌
  * @Date 2018 /10/1 19:39
- * @Description TODO
+ * @Description
  */
 public class TempUtil {
+
     /**
      * Create excel hssf workbook.
      * 创建一个工作空间
      *
-     * @param sheetName the sheet name 工作簿名称
-     * @param header    the header 工作簿中的表头
+     * @param sheetNumbs the sheet nums 工作簿数量
+     * @param header     the header 工作簿中的表头
      * @return the hssf workbook  工作空间
      */
-    public static HSSFWorkbook createExcel(String sheetName, String[] header) {
+    public static HSSFWorkbook createExcel(int sheetNumbs, Map<String, String> header) {
         HSSFWorkbook hssfWorkbook = new HSSFWorkbook();
-        HSSFSheet hssfSheet = hssfWorkbook.createSheet(sheetName);
-        HSSFRow row = hssfSheet.createRow(0);
+        HSSFSheet hssfSheet;
+        HSSFRow row;
         HSSFFont font = hssfWorkbook.createFont();
         font.setFontName("微软雅黑");
         //创建行样式
@@ -42,34 +42,26 @@ public class TempUtil {
         font.setFontHeightInPoints((short) 15);
         //字体颜色
         font.setColor(IndexedColors.RED.getIndex());
-        //String[] myList = new String[]{"id", "username", "password"};
-        int cellid = 0;
-        for (String index : header) {
-            row.setHeight((short) 500);
-            Cell cell = row.createCell(cellid);
-            cell.setCellStyle(style);
-            cell.setCellValue(index);
-            hssfSheet.autoSizeColumn(cellid);
-            cellid++;
+        for (int i = 0; i < sheetNumbs; i++) {
+            int k = i;
+            int j = 1;
+            if (i > 9) {
+                j++;
+                k = i - 10;
+            }
+            hssfSheet = hssfWorkbook.createSheet("表" + j + "-" + k);
+            row = hssfSheet.createRow(0);
+            int cellId = 0;
+            for (Map.Entry<String, String> entry : header.entrySet()) {
+                row.setHeight((short) 500);
+                Cell cell = row.createCell(cellId);
+                cell.setCellStyle(style);
+                cell.setCellValue(entry.getValue());
+                hssfSheet.autoSizeColumn(cellId);
+                cellId++;
+            }
         }
         return hssfWorkbook;
-    }
-
-    /**
-     * Gets hssf sheet.
-     * 得到工作空间中的sheet
-     *
-     * @param hssfWorkbook the hssf workbook  工作空间
-     * @param sheetName    the sheet name  工作簿名称
-     * @return the hssf sheet  工作簿
-     * @throws Exception the exception
-     */
-    public static HSSFSheet getHSSFSheet(HSSFWorkbook hssfWorkbook, String sheetName) throws Exception {
-        HSSFSheet sheet = hssfWorkbook.getSheet(sheetName);
-        if (sheet == null) {
-            throw new Exception("该工作簿没有所指定的sheet");
-        }
-        return sheet;
     }
 
     /**
@@ -98,9 +90,7 @@ public class TempUtil {
         } else {
             throw new Exception("起始行、终止行、起始列、终止列不能小于0");
         }
-
     }
-
 
     /**
      * Set date.
@@ -116,9 +106,21 @@ public class TempUtil {
      * @param sheet     the sheet  选择要设置约束的sheet工作簿
      * @throws Exception the exception
      */
-    public static void setDate(int firstRow, int lastRow, int firstCol, int lastCol, String firstDate, String lastDate, String dateType, HSSFSheet sheet) throws Exception {
+    public static void setDate(int firstRow, int lastRow, int firstCol, int lastCol, String firstDate, String lastDate, String dateType, HSSFSheet sheet,HSSFWorkbook workbook) throws Exception {
         if (firstRow <= 1 || lastRow <= 1 || firstCol <= 0 || lastCol <= 0) {
             HSSFDataValidationHelper hssfDataValidationHelper = new HSSFDataValidationHelper(sheet);
+            HSSFDataFormat dataFormat = workbook.createDataFormat();
+            HSSFRow row;
+            HSSFCell cell;
+            HSSFCellStyle cellStyle = workbook.createCellStyle();
+            cellStyle.setDataFormat(dataFormat.getFormat("yyyy-MM-dd"));
+            for (int i=firstRow;i<=lastRow;i++){
+                row = sheet.getRow(i);
+                for(int j = firstCol;j <= lastCol; j++){
+                    cell = row.createCell((short)j);
+                    cell.setCellStyle(cellStyle);
+                }
+            }
             String pattern = "\\d{4}(-)\\d{1,2}\\1\\d{1,2}";
             Pattern r = Pattern.compile(pattern);
             if (r.matcher(firstDate).matches() && r.matcher(lastDate).matches()) {
@@ -137,7 +139,6 @@ public class TempUtil {
             throw new Exception("起始行、终止行、起始列、终止列不能小于0");
         }
     }
-
 
     /**
      * Sets length.
@@ -199,24 +200,4 @@ public class TempUtil {
             }
         }
     }
-
-    /**
-     * Gets excel.
-     * 获取Excel文档
-     *
-     * @param hssfWorkbook the hssf workbook  Excel工作空间
-     * @param fileName     the file name  Excel文件名称
-     * @param response     the response  HTTPServletResponse响应
-     * @throws Exception the exception
-     */
-    public static void getExcel(HSSFWorkbook hssfWorkbook, String fileName, HttpServletResponse response) throws Exception {
-        response.setCharacterEncoding("UTF-8");
-        response.setContentType("application/vnd.ms-excel");
-        response.setHeader("Content-Disposition", "attachment; filename=" + URLEncoder.encode(fileName + ".xls", "UTF-8"));
-        hssfWorkbook.write(response.getOutputStream());
-        System.out.println(response.getHeader("Content-Disposition"));
-        response.getOutputStream().flush();
-        response.getOutputStream().close();
-    }
 }
-

@@ -20,6 +20,7 @@
 <body>
 <div style="padding: 15px;">
     <div class="demoTable" style="text-align: center;margin-top: 15px;">
+        请搜索：
         <div class="layui-inline">
             <input class="layui-input" id="search" autocomplete="off">
         </div>
@@ -27,11 +28,12 @@
     </div>
 </div>
 <xblock>
-    <button style="float: right" class="layui-btn" onclick="x_admin_show('添加教室','/clazzroom/add',500,400)"><i class="layui-icon"></i>添加
+    <button class="layui-btn layui-btn-sm" onclick="x_admin_show('添加教室','/clazzroom/add',500,400)"><i
+            class="layui-icon"></i>添加
     </button>
-    <button class="layui-btn" id="imporExcel">批量导入</button>
-    <button class="layui-btn">批量导出</button>
-    <button class="layui-btn" id="exportAll">全部导出</button>
+    <button class="layui-btn layui-btn-sm" id="imporExcel">批量导入</button>
+    <button class="layui-btn layui-btn-sm">批量导出</button>
+    <button class="layui-btn layui-btn-sm" id="exportAll">全部导出</button>
 </xblock>
 
 <table class="layui-hide" id="clazzroom" lay-filter="test"></table>
@@ -40,8 +42,6 @@
 </body>
 
 <script type="text/javascript" src="/js/layui/layui.js"></script>
-
-<script type="text/html" id="toolbarDemo">
 
 </script>
 

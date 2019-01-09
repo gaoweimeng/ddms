@@ -48,7 +48,7 @@
                     </c:if>
                 </dl>
             </li>
-            <li class="layui-nav-item"><a href="">退了</a></li>
+            <li class="layui-nav-item"><a href="" class="outLogin">退了</a></li>
         </ul>
     </div>
     <div class="layui-side layui-bg-black">
@@ -56,9 +56,9 @@
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
             <ul class="layui-nav layui-nav-tree" lay-filter="test">
                 <li class="layui-nav-item"><a data-id="1" data-uri="college/" class="my-demo">学院管理</a></li>
-                <li class="layui-nav-item"><a data-id="2" data-uri="major" class="my-demo">专业管理</a></li>
+                <li class="layui-nav-item"><a data-id="2" data-uri="major/" class="my-demo">专业管理</a></li>
                 <li class="layui-nav-item"><a data-id="3" data-uri="teacher/" class="my-demo">教师管理</a></li>
-                <li class="layui-nav-item"><a data-id="4" data-uri="student" class="my-demo">学生管理</a></li>
+                <li class="layui-nav-item"><a data-id="4" data-uri="student/" class="my-demo">学生管理</a></li>
                 <li class="layui-nav-item"><a data-id="5" data-uri="curriculum" class="my-demo">科目管理</a></li>
                 <li class="layui-nav-item"><a data-id="6" data-uri="clazzroom/" class="my-demo">教室管理</a></li>
                 <li class="layui-nav-item"><a data-id="7" data-uri="clazz/" class="my-demo">班级管理</a></li>
@@ -129,6 +129,18 @@
     // function load(view) {
     //     layui.jquery(".layui-show").load("HTML/" + view + ".html", function() {});
     // }
+    $(".outLogin").click(function () {
+        $.ajax({
+            url:"http://localhost:8080/outLogin",
+            type:"post",
+            data:{},
+            success:function () {
+                window.parent.location.reload();
+            },error:function () {
+                
+            }
+        })
+    })
 </script>
 </body>
 

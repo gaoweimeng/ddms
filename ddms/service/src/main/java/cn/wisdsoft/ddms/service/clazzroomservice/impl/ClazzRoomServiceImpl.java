@@ -26,10 +26,11 @@ public class ClazzRoomServiceImpl implements ClazzRoomService {
 
     @Autowired
     private ClazzRoomMapper clazzRoomMapper;
+
     /**
      * 通过条件查询所有数据
      *
-     * @param condition  查询条件
+     * @param condition 查询条件
      * @return cn.wisdsoft.pojo.DdmsResult
      * @date 21:13 2018/9/24
      */
@@ -42,9 +43,9 @@ public class ClazzRoomServiceImpl implements ClazzRoomService {
     /**
      * 查通过条件查询所有数据并分页
      *
-     * @param page  当前页数
-     * @param limit  显示条数
-     * @param condition  查询条件
+     * @param page      当前页数
+     * @param limit     显示条数
+     * @param condition 查询条件
      * @return cn.wisdsoft.pojo.PageResult<cn.wisdsoft.ddms.pojo.ClazzRoom>
      * @date 21:31 2018/9/24
      */
@@ -59,7 +60,7 @@ public class ClazzRoomServiceImpl implements ClazzRoomService {
     /**
      * 添加教室
      *
-     * @param clazzRoom  教室
+     * @param clazzRoom 教室
      * @return cn.wisdsoft.pojo.DdmsResult
      * @date 21:04 2018/9/25
      */
@@ -72,7 +73,7 @@ public class ClazzRoomServiceImpl implements ClazzRoomService {
     /**
      * 删除教室
      *
-     * @param id  教室id
+     * @param id 教室id
      * @return cn.wisdsoft.pojo.DdmsResult
      * @date 21:08 2018/9/25
      */
@@ -86,7 +87,7 @@ public class ClazzRoomServiceImpl implements ClazzRoomService {
      * 查询所有数据并分页
      *
      * @param page  当前页数
-     * @param limit  显示条数
+     * @param limit 显示条数
      * @return cn.wisdsoft.pojo.PageResult<cn.wisdsoft.ddms.pojo.ClazzRoom>
      * @date 21:14 2018/9/25
      */
@@ -102,7 +103,7 @@ public class ClazzRoomServiceImpl implements ClazzRoomService {
     /**
      * 更新教室
      *
-     * @param clazzRoom  教室对象
+     * @param clazzRoom 教室对象
      * @return cn.wisdsoft.pojo.DdmsResult
      * @date 21:08 2018/9/27
      */
@@ -115,7 +116,7 @@ public class ClazzRoomServiceImpl implements ClazzRoomService {
     /**
      * 导入excel数据
      *
-     * @param lists  excel数据
+     * @param lists excel数据
      * @return cn.wisdsoft.pojo.DdmsResult
      * @date 11:46 2018/9/29
      */

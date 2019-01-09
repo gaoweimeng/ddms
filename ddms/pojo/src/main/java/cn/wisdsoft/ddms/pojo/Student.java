@@ -7,41 +7,63 @@ public class Student {
 
     private String stuName;
 
-    private String stuPicture;
-
     private String stuSex;
 
-    private Date stuBrithdate;
+    private Date stuBirthday;
 
     private String stuNative;
 
-    private Date stuEntrancetime;
+    private Date stuEntranceTime;
 
-    private Date stuGraduationtime;
+    private Date stuGraduationTime;
 
     private String stuPoliticalface;
 
-    private String stuFamilynum;
+    private String stuFamilynumber;
 
     private String stuAddress;
 
-    private Integer stuPhone;
+    private String stuPhone;
 
     private String stuIdcard;
 
-    private String stuClazzid;
-
-    private Integer stuDormitoryid;
+    private String stuMajorId;
 
     private String stuNational;
 
-    private String stuDelflag;
+    private Integer stuDelflag;
 
     private String stuStatus;
 
+    private String stuProvince;
+
+    private String stuSource;
+
+    private String stuCulobject;
+
+    private String stuCulcategory;
+
+    private String stuSchooltype;
+
+    private String stuGradcategory;
+
+    private String stuCandidatetype;
+
+    private String stuQq;
+
     private String remark;
 
-    private String clazzName;
+    private String stuPicture;
+
+    private String majorName;
+
+    public String getMajorName() {
+        return majorName;
+    }
+
+    public void setMajorName(String majorName) {
+        this.majorName = majorName;
+    }
 
     public String getId() {
         return id;
@@ -59,14 +81,6 @@ public class Student {
         this.stuName = stuName == null ? null : stuName.trim();
     }
 
-    public String getStuPicture() {
-        return stuPicture;
-    }
-
-    public void setStuPicture(String stuPicture) {
-        this.stuPicture = stuPicture == null ? null : stuPicture.trim();
-    }
-
     public String getStuSex() {
         return stuSex;
     }
@@ -75,12 +89,12 @@ public class Student {
         this.stuSex = stuSex == null ? null : stuSex.trim();
     }
 
-    public Date getStuBrithdate() {
-        return stuBrithdate;
+    public Date getStuBirthday() {
+        return stuBirthday;
     }
 
-    public void setStuBrithdate(Date stuBrithdate) {
-        this.stuBrithdate = stuBrithdate;
+    public void setStuBirthday(Date stuBirthday) {
+        this.stuBirthday = stuBirthday;
     }
 
     public String getStuNative() {
@@ -91,20 +105,20 @@ public class Student {
         this.stuNative = stuNative == null ? null : stuNative.trim();
     }
 
-    public Date getStuEntrancetime() {
-        return stuEntrancetime;
+    public Date getStuEntranceTime() {
+        return stuEntranceTime;
     }
 
-    public void setStuEntrancetime(Date stuEntrancetime) {
-        this.stuEntrancetime = stuEntrancetime;
+    public void setStuEntranceTime(Date stuEntranceTime) {
+        this.stuEntranceTime = stuEntranceTime;
     }
 
-    public Date getStuGraduationtime() {
-        return stuGraduationtime;
+    public Date getStuGraduationTime() {
+        return stuGraduationTime;
     }
 
-    public void setStuGraduationtime(Date stuGraduationtime) {
-        this.stuGraduationtime = stuGraduationtime;
+    public void setStuGraduationTime(Date stuGraduationTime) {
+        this.stuGraduationTime = stuGraduationTime;
     }
 
     public String getStuPoliticalface() {
@@ -115,12 +129,12 @@ public class Student {
         this.stuPoliticalface = stuPoliticalface == null ? null : stuPoliticalface.trim();
     }
 
-    public String getStuFamilynum() {
-        return stuFamilynum;
+    public String getStuFamilynumber() {
+        return stuFamilynumber;
     }
 
-    public void setStuFamilynum(String stuFamilynum) {
-        this.stuFamilynum = stuFamilynum == null ? null : stuFamilynum.trim();
+    public void setStuFamilynumber(String stuFamilynumber) {
+        this.stuFamilynumber = stuFamilynumber == null ? null : stuFamilynumber.trim();
     }
 
     public String getStuAddress() {
@@ -131,12 +145,12 @@ public class Student {
         this.stuAddress = stuAddress == null ? null : stuAddress.trim();
     }
 
-    public Integer getStuPhone() {
+    public String getStuPhone() {
         return stuPhone;
     }
 
-    public void setStuPhone(Integer stuPhone) {
-        this.stuPhone = stuPhone;
+    public void setStuPhone(String stuPhone) {
+        this.stuPhone = stuPhone == null ? null : stuPhone.trim();
     }
 
     public String getStuIdcard() {
@@ -147,20 +161,12 @@ public class Student {
         this.stuIdcard = stuIdcard == null ? null : stuIdcard.trim();
     }
 
-    public String getStuClazzid() {
-        return stuClazzid;
+    public String getStuMajorId() {
+        return stuMajorId;
     }
 
-    public void setStuClazzid(String stuClazzid) {
-        this.stuClazzid = stuClazzid == null ? null : stuClazzid.trim();
-    }
-
-    public Integer getStuDormitoryid() {
-        return stuDormitoryid;
-    }
-
-    public void setStuDormitoryid(Integer stuDormitoryid) {
-        this.stuDormitoryid = stuDormitoryid;
+    public void setStuMajorId(String stuMajorId) {
+        this.stuMajorId = stuMajorId == null ? null : stuMajorId.trim();
     }
 
     public String getStuNational() {
@@ -171,12 +177,12 @@ public class Student {
         this.stuNational = stuNational == null ? null : stuNational.trim();
     }
 
-    public String getStuDelflag() {
+    public Integer getStuDelflag() {
         return stuDelflag;
     }
 
-    public void setStuDelflag(String stuDelflag) {
-        this.stuDelflag = stuDelflag == null ? null : stuDelflag.trim();
+    public void setStuDelflag(Integer stuDelflag) {
+        this.stuDelflag = stuDelflag;
     }
 
     public String getStuStatus() {
@@ -187,6 +193,70 @@ public class Student {
         this.stuStatus = stuStatus == null ? null : stuStatus.trim();
     }
 
+    public String getStuProvince() {
+        return stuProvince;
+    }
+
+    public void setStuProvince(String stuProvince) {
+        this.stuProvince = stuProvince == null ? null : stuProvince.trim();
+    }
+
+    public String getStuSource() {
+        return stuSource;
+    }
+
+    public void setStuSource(String stuSource) {
+        this.stuSource = stuSource == null ? null : stuSource.trim();
+    }
+
+    public String getStuCulobject() {
+        return stuCulobject;
+    }
+
+    public void setStuCulobject(String stuCulobject) {
+        this.stuCulobject = stuCulobject == null ? null : stuCulobject.trim();
+    }
+
+    public String getStuCulcategory() {
+        return stuCulcategory;
+    }
+
+    public void setStuCulcategory(String stuCulcategory) {
+        this.stuCulcategory = stuCulcategory == null ? null : stuCulcategory.trim();
+    }
+
+    public String getStuSchooltype() {
+        return stuSchooltype;
+    }
+
+    public void setStuSchooltype(String stuSchooltype) {
+        this.stuSchooltype = stuSchooltype == null ? null : stuSchooltype.trim();
+    }
+
+    public String getStuGradcategory() {
+        return stuGradcategory;
+    }
+
+    public void setStuGradcategory(String stuGradcategory) {
+        this.stuGradcategory = stuGradcategory == null ? null : stuGradcategory.trim();
+    }
+
+    public String getStuCandidatetype() {
+        return stuCandidatetype;
+    }
+
+    public void setStuCandidatetype(String stuCandidatetype) {
+        this.stuCandidatetype = stuCandidatetype == null ? null : stuCandidatetype.trim();
+    }
+
+    public String getStuQq() {
+        return stuQq;
+    }
+
+    public void setStuQq(String stuQq) {
+        this.stuQq = stuQq == null ? null : stuQq.trim();
+    }
+
     public String getRemark() {
         return remark;
     }
@@ -195,11 +265,11 @@ public class Student {
         this.remark = remark == null ? null : remark.trim();
     }
 
-    public String getClazzName() {
-        return clazzName;
+    public String getStuPicture() {
+        return stuPicture;
     }
 
-    public void setClazzName(String clazzName) {
-        this.clazzName = clazzName == null ? null : clazzName.trim();
+    public void setStuPicture(String stuPicture) {
+        this.stuPicture = stuPicture == null ? null : stuPicture.trim();
     }
 }
